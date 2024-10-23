@@ -1,8 +1,4 @@
-
-
-
-
-local Release = "Version 0.3"
+local Release = "Version 0.5"
 local NotificationDuration = 6.5
 local RayfieldFolder = "Holo"
 local ConfigurationFolder = RayfieldFolder.."/Configurations"
@@ -119,7 +115,7 @@ if game["Run Service"]:IsStudio() then
 end
 
 pcall(function()
-_G.LastRayField.Name = 'Old Arrayfield'
+_G.LastRayField.Name = 'HoloHub UI'
 _G.LastRayField.Enabled = false
 end)
 local ParentObject = function(Gui)
@@ -752,7 +748,7 @@ function Hide()
 		task.spawn(CloseSideBar)
 	end
 	Debounce = true
-	RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping RightShift", Duration = 7})
+	RayfieldLibrary:Notify({Title = "Interface Hidden", Content = "The interface has been hidden, you can unhide the interface by tapping RightControl", Duration = 7})
 	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 470, 0, 400)}):Play()
 	TweenService:Create(Main.Topbar, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 470, 0, 45)}):Play()
 	TweenService:Create(Main, TweenInfo.new(0.5, Enum.EasingStyle.Quint), {BackgroundTransparency = 1}):Play()
@@ -1100,10 +1096,10 @@ function RayfieldLibrary:CreateWindow(Settings)
 	LoadingFrame.Subtitle.TextTransparency = 1
 	Main.Shadow.Image.ImageTransparency = 1
 	LoadingFrame.Version.TextTransparency = 1
-	LoadingFrame.Title.Text = Settings.LoadingTitle or "Arrayfield Interface Suite"
-	LoadingFrame.Subtitle.Text = Settings.LoadingSubtitle or "by Sirius | Meta"
-	if Settings.LoadingTitle ~= "Arrayfield Interface Suite" then
-		LoadingFrame.Version.Text = "Arrayfield UI"
+	LoadingFrame.Title.Text = Settings.LoadingTitle or "HoloHub Interface Suite"
+	LoadingFrame.Subtitle.Text = Settings.LoadingSubtitle or "by Pzycho | Czornyx"
+	if Settings.LoadingTitle ~= "HoloHub Interface Suite" then
+		LoadingFrame.Version.Text = "HoloHub UI"
 	end
 	Topbar.Visible = false
 	Elements.Visible = false
@@ -2732,7 +2728,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			UserInputService.InputBegan:Connect(function(input, processed)
 
 				if CheckingForKey then
-					if input.KeyCode ~= Enum.KeyCode.Unknown and input.KeyCode ~= Enum.KeyCode.RightShift then
+					if input.KeyCode ~= Enum.KeyCode.Unknown and input.KeyCode ~= Enum.KeyCode.RightControl then
 						local SplitMessage = string.split(tostring(input.KeyCode), ".")
 						local NewKeyNoEnum = SplitMessage[3]
 						Keybind.KeybindFrame.KeybindBox.Text = tostring(NewKeyNoEnum)
@@ -3611,7 +3607,7 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 end)
 
 UserInputService.InputBegan:Connect(function(input, processed)
-	if (input.KeyCode == Enum.KeyCode.RightShift and not processed) then
+	if (input.KeyCode == Enum.KeyCode.RightControl and not processed) then
 		if Debounce then return end
 		if Hidden then
 			Hidden = false
